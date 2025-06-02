@@ -1,0 +1,358 @@
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Top Up Game - Lengkap</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9fafb;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-green-600 text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Top Up Game</h1>
+      <nav class="space-x-6 hidden md:flex">
+        <a href="#topup" class="hover:underline">Top Up</a>
+        <a href="#howto" class="hover:underline">Cara Pembayaran</a>
+        <a href="#faq" class="hover:underline">FAQ</a>
+        <a href="#contact" class="hover:underline">Kontak</a>
+        <a href="#cs" class="hover:underline">Customer Service</a>
+      </nav>
+      <button id="mobileMenuBtn" class="md:hidden focus:outline-none">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden bg-green-700 px-6 pb-4 md:hidden">
+      <a href="#topup" class="block py-2 border-b border-green-600 hover:bg-green-600">Top Up</a>
+      <a href="#howto" class="block py-2 border-b border-green-600 hover:bg-green-600">Cara Pembayaran</a>
+      <a href="#faq" class="block py-2 border-b border-green-600 hover:bg-green-600">FAQ</a>
+      <a href="#contact" class="block py-2 border-b border-green-600 hover:bg-green-600">Kontak</a>
+      <a href="#cs" class="block py-2 hover:bg-green-600">Customer Service</a>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="flex-grow max-w-7xl mx-auto px-6 py-10 w-full">
+
+    <!-- Top Up Form -->
+    <section id="topup" class="bg-white rounded-lg shadow-md p-8 max-w-3xl mx-auto">
+      <h2 class="text-3xl font-semibold text-gray-900 mb-6 text-center">Formulir Top Up Game</h2>
+      <form id="topupForm" class="space-y-6" autocomplete="off" novalidate>
+        <!-- Nama Game -->
+        <div>
+          <label for="game" class="block text-gray-700 font-semibold mb-2">Nama Game <span class="text-red-600">*</span></label>
+          <select id="game" name="game" required class="w-full border border-gray-300 rounded px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-600">
+            <option value="" disabled selected>Pilih game</option>
+            <option value="Mobile Legends">Mobile Legends</option>
+            <option value="PUBG Mobile">PUBG Mobile</option>
+            <option value="Free Fire">Free Fire</option>
+            <option value="Genshin Impact">Genshin Impact</option>
+            <option value="Call of Duty Mobile">Call of Duty Mobile</option>
+            <option value="Valorant">Valorant</option>
+            <option value="Among Us">Among Us</option>
+            <option value="Minecraft">Minecraft</option>
+          </select>
+          <p class="text-red-600 text-sm mt-1 hidden" id="errorGame">Mohon pilih nama game.</p>
+        </div>
+
+        <!-- Server / Region -->
+        <div>
+          <label for="server" class="block text-gray-700 font-semibold mb-2">Server / Region <span class="text-red-600">*</span></label>
+          <input
+            type="text"
+            id="server"
+            name="server"
+            placeholder="Contoh: Asia, Europe, NA, ID Server"
+            required
+            class="w-full border border-gray-300 rounded px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-600"
+          />
+          <p class="text-red-600 text-sm mt-1 hidden" id="errorServer">Mohon isi server atau region.</p>
+        </div>
+
+        <!-- ID / Username Game -->
+        <div>
+          <label for="gameId" class="block text-gray-700 font-semibold mb-2">ID / Username Game <span class="text-red-600">*</span></label>
+          <input
+            type="text"
+            id="gameId"
+            name="gameId"
+            placeholder="Masukkan ID atau username game"
+            required
+            class="w-full border border-gray-300 rounded px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-600"
+          />
+          <p class="text-red-600 text-sm mt-1 hidden" id="errorGameId">Mohon isi ID atau username game.</p>
+        </div>
+
+        <!-- Nama Pembeli -->
+        <div>
+          <label for="buyerName" class="block text-gray-700 font-semibold mb-2">Nama Pembeli <span class="text-red-600">*</span></label>
+          <input
+            type="text"
+            id="buyerName"
+            name="buyerName"
+            placeholder="Masukkan nama lengkap"
+            required
+            class="w-full border border-gray-300 rounded px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-600"
+          />
+          <p class="text-red-600 text-sm mt-1 hidden" id="errorBuyerName">Mohon isi nama pembeli.</p>
+        </div>
+
+        <!-- Nomor WhatsApp Pembeli -->
+        <div>
+          <label for="buyerWA" class="block text-gray-700 font-semibold mb-2">Nomor WhatsApp <span class="text-red-600">*</span></label>
+          <input
+            type="tel"
+            id="buyerWA"
+            name="buyerWA"
+            placeholder="Contoh: 6281234567890"
+            pattern="^62[0-9]{8,15}$"
+            required
+            class="w-full border border-gray-300 rounded px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-600"
+          />
+          <p class="text-xs text-gray-400 mt-1">Masukkan nomor WA dengan kode negara (contoh: 6281234567890)</p>
+          <p class="text-red-600 text-sm mt-1 hidden" id="errorBuyerWA">Nomor WA tidak valid. Gunakan format 62xxxxxxxxxx.</p>
+        </div>
+
+        <!-- Jumlah Top Up -->
+        <div>
+          <label for="amount" class="block text-gray-700 font-semibold mb-2">Jumlah Top Up <span class="text-red-600">*</span></label>
+          <input
+            type="number"
+            id="amount"
+            name="amount"
+            placeholder="Masukkan jumlah top up"
+            min="1"
+            required
+            class="w-full border border-gray-300 rounded px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-600"
+          />
+          <p class="text-red-600 text-sm mt-1 hidden" id="errorAmount">Mohon masukkan jumlah top up yang valid.</p>
+        </div>
+
+        <!-- Metode Pembayaran -->
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2">Metode Pembayaran <span class="text-red-600">*</span></label>
+          <div class="space-y-2">
+            <label class="inline-flex items-center">
+              <input type="radio" name="paymentMethod" value="Transfer Bank" required class="form-radio text-green-600" />
+              <span class="ml-2">Transfer Bank (via Admin)</span>
+            </label>
+            <label class="inline-flex items-center">
+              <input type="radio" name="paymentMethod" value="E-Wallet" class="form-radio text-green-600" />
+              <span class="ml-2">E-Wallet (via Admin)</span>
+            </label>
+            <label class="inline-flex items-center">
+              <input type="radio" name="paymentMethod" value="Pulsa" class="form-radio text-green-600" />
+              <span class="ml-2">Pulsa (via Admin)</span>
+            </label>
+          </div>
+          <p class="text-red-600 text-sm mt-1 hidden" id="errorPaymentMethod">Mohon pilih metode pembayaran.</p>
+        </div>
+
+        <!-- Catatan Tambahan -->
+        <div>
+          <label for="notes" class="block text-gray-700 font-semibold mb-2">Catatan Tambahan (Opsional)</label>
+          <textarea
+            id="notes"
+            name="notes"
+            rows="3"
+            placeholder="Masukkan catatan tambahan jika ada"
+            class="w-full border border-gray-300 rounded px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-600 resize-none"
+          ></textarea>
+        </div>
+
+        <!-- Info -->
+        <div class="bg-green-100 border border-green-300 rounded p-4 text-green-800 text-sm">
+          <p><strong>Pengiriman:</strong> Pengiriman top up dilakukan melalui chat WhatsApp admin setelah konfirmasi pembayaran.</p>
+          <p><strong>Metode Pembayaran:</strong> Semua pembayaran diproses melalui admin.</p>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="w-full bg-green-600 text-white font-semibold py-3 rounded hover:bg-green-700 transition"
+        >
+          Kirim Pesanan
+        </button>
+      </form>
+    </section>
+
+    <!-- How to Pay Section -->
+    <section id="howto" class="max-w-3xl mx-auto mt-16 bg-white rounded-lg shadow-md p-8">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-6 text-center">Cara Pembayaran</h2>
+      <ol class="list-decimal list-inside space-y-3 text-gray-700 text-lg">
+        <li>Pilih game dan isi data top up dengan lengkap pada formulir di atas.</li>
+        <li>Klik tombol "Kirim Pesanan" untuk menghubungi admin via WhatsApp dengan data pesanan Anda.</li>
+        <li>Admin akan menghubungi Anda untuk konfirmasi metode pembayaran dan total biaya.</li>
+        <li>Lakukan pembayaran sesuai instruksi dari admin.</li>
+        <li>Setelah pembayaran terkonfirmasi, admin akan memproses pengisian top up ke akun game Anda.</li>
+        <li>Pengiriman top up akan dikonfirmasi melalui chat WhatsApp.</li>
+      </ol>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="max-w-3xl mx-auto mt-16 bg-white rounded-lg shadow-md p-8">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-6 text-center">Pertanyaan yang Sering Diajukan (FAQ)</h2>
+      <div class="space-y-4">
+        <details class="border border-gray-300 rounded p-4">
+          <summary class="font-semibold cursor-pointer">Bagaimana cara saya tahu top up sudah berhasil?</summary>
+          <p class="mt-2 text-gray-700">Admin akan mengonfirmasi pengisian top up melalui chat WhatsApp dan Anda akan menerima notifikasi di dalam game.</p>
+        </details>
+        <details class="border border-gray-300 rounded p-4">
+          <summary class="font-semibold cursor-pointer">Berapa lama proses top up?</summary>
+          <p class="mt-2 text-gray-700">Proses biasanya memakan waktu 10-30 menit setelah pembayaran terkonfirmasi.</p>
+        </details>
+        <details class="border border-gray-300 rounded p-4">
+          <summary class="font-semibold cursor-pointer">Apakah data saya aman?</summary>
+          <p class="mt-2 text-gray-700">Data Anda hanya digunakan untuk proses top up dan tidak akan dibagikan ke pihak lain.</p>
+        </details>
+        <details class="border border-gray-300 rounded p-4">
+          <summary class="font-semibold cursor-pointer">Metode pembayaran apa saja yang tersedia?</summary>
+          <p class="mt-2 text-gray-700">Kami menerima pembayaran via transfer bank, e-wallet, dan pulsa, semua diproses melalui admin.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="max-w-3xl mx-auto mt-16 bg-white rounded-lg shadow-md p-8 text-center">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-4">Kontak Admin</h2>
+      <p class="text-gray-700 mb-4">Jika ada pertanyaan atau butuh bantuan, silakan hubungi admin kami melalui WhatsApp:</p>
+      <a href="https://wa.me/6282362596667" target="_blank" rel="noopener" class="inline-flex items-center justify-center space-x-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded shadow">
+        <i class="fab fa-whatsapp fa-lg"></i>
+        <span>Chat WhatsApp Admin</span>
+      </a>
+      <p class="text-gray-500 mt-2 text-sm">Nomor WA Admin: +62 823-6259-6667</p>
+    </section>
+
+    <!-- Customer Service Section -->
+    <section id="cs" class="max-w-3xl mx-auto mt-16 bg-white rounded-lg shadow-md p-8 text-center">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-4">Customer Service</h2>
+      <p class="text-gray-700 mb-4">Butuh bantuan langsung? Hubungi Customer Service kami melalui WhatsApp:</p>
+      <a href="https://wa.me/6285270892831" target="_blank" rel="noopener" class="inline-flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded shadow">
+        <i class="fab fa-whatsapp fa-lg"></i>
+        <span>Chat WhatsApp Customer Service</span>
+      </a>
+      <p class="text-gray-500 mt-3 text-sm">Nomor WA: 0852-7089-2831</p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-green-600 text-white text-center py-4 mt-16">
+    <p>© 2024 Top Up Game. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Form validation and WA message sending
+    const form = document.getElementById('topupForm');
+    const adminWA = "6282362596667"; // Nomor WA admin baru tanpa tanda +, hanya angka
+
+    function showError(id, show) {
+      const el = document.getElementById(id);
+      if (show) el.classList.remove('hidden');
+      else el.classList.add('hidden');
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Clear previous errors
+      showError('errorGame', false);
+      showError('errorServer', false);
+      showError('errorGameId', false);
+      showError('errorBuyerName', false);
+      showError('errorBuyerWA', false);
+      showError('errorAmount', false);
+      showError('errorPaymentMethod', false);
+
+      // Get values
+      const game = form.game.value.trim();
+      const server = form.server.value.trim();
+      const gameId = form.gameId.value.trim();
+      const buyerName = form.buyerName.value.trim();
+      const buyerWA = form.buyerWA.value.trim();
+      const amount = form.amount.value.trim();
+      const paymentMethod = form.paymentMethod.value;
+      const notes = form.notes.value.trim();
+
+      let valid = true;
+
+      if (!game) {
+        showError('errorGame', true);
+        valid = false;
+      }
+      if (!server) {
+        showError('errorServer', true);
+        valid = false;
+      }
+      if (!gameId) {
+        showError('errorGameId', true);
+        valid = false;
+      }
+      if (!buyerName) {
+        showError('errorBuyerName', true);
+        valid = false;
+      }
+      // Validate WA number pattern: must start with 62 and 10-17 digits total
+      const waPattern = /^62[0-9]{8,15}$/;
+      if (!waPattern.test(buyerWA)) {
+        showError('errorBuyerWA', true);
+        valid = false;
+      }
+      if (!amount || isNaN(amount) || Number(amount) < 1) {
+        showError('errorAmount', true);
+        valid = false;
+      }
+      if (!paymentMethod) {
+        showError('errorPaymentMethod', true);
+        valid = false;
+      }
+
+      if (!valid) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      // Encode values for URL
+      function encode(str) {
+        return encodeURIComponent(str);
+      }
+
+      // Compose WhatsApp message
+      let message = `Halo Admin,%0A%0ASaya ingin melakukan top up game dengan data berikut:%0A`;
+      message += `- Nama Game: ${encode(game)}%0A`;
+      message += `- Server / Region: ${encode(server)}%0A`;
+      message += `- ID / Username Game: ${encode(gameId)}%0A`;
+      message += `- Nama Pembeli: ${encode(buyerName)}%0A`;
+      message += `- Nomor WhatsApp Pembeli: ${encode(buyerWA)}%0A`;
+      message += `- Jumlah Top Up: ${encode(amount)}%0A`;
+      message += `- Metode Pembayaran: ${encode(paymentMethod)}%0A`;
+      if (notes) {
+        message += `- Catatan Tambahan: ${encode(notes)}%0A`;
+      }
+      message += `%0AMohon info metode pembayaran dan konfirmasi pengiriman. Terima kasih!`;
+
+      // Open WhatsApp chat with admin
+      const waURL = `https://wa.me/${adminWA}?text=${message}`;
+      window.open(waURL, '_blank');
+    });
+  </script>
+</body>
+</html>
